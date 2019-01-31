@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Text, Alert, View, KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity, AsyncStorage } from 'react-native';
+import { Text, Alert, View, ScrollView, KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity, AsyncStorage } from 'react-native';
 
 import api from '../services/api';
 import Loading from '../components/Loading';
@@ -59,34 +59,34 @@ export class Login extends Component {
     return (
       <Fragment>
         {!this.state.loading ?
-          <KeyboardAvoidingView behavior='padding' style={styles.container}>
-            <TextInput
-              textContentType='emailAddress'
-              placeholder='email'
-              placeholderTextColor='white'
-              returnKeyType='next'
-              keyboardType='email-address'
-              autoCapitalize="none"
-              autoCorrect={false}
-              style={styles.input}
-              onChange={(event) => this.textHandler(event.nativeEvent.text, 'email')}
-              value={user.email}
-              onSubmitEditing={() => this.passwordInput.focus()} />
-            <TextInput
-              textContentType='password'
-              placeholder='password'
-              placeholderTextColor='white'
-              returnKeyType='go'
-              secureTextEntry
-              style={[styles.input, styles.inputBottom]}
-              ref={(input) => this.passwordInput = input}
-              onChange={(event) => this.textHandler(event.nativeEvent.text, 'password')}
-              value={user.password} />
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.buttonLogIn} onPress={this.logIn} >
-                <Text style={styles.textLogIn}>Log in</Text>
-              </TouchableOpacity>
-            </View>
+          <KeyboardAvoidingView keyboardVerticalOffset={-500} behavior='padding' style={styles.container}>
+              <TextInput
+                textContentType='emailAddress'
+                placeholder='email'
+                placeholderTextColor='white'
+                returnKeyType='next'
+                keyboardType='email-address'
+                autoCapitalize="none"
+                autoCorrect={false}
+                style={styles.input}
+                onChange={(event) => this.textHandler(event.nativeEvent.text, 'email')}
+                value={user.email}
+                onSubmitEditing={() => this.passwordInput.focus()} />
+              <TextInput
+                textContentType='password'
+                placeholder='password'
+                placeholderTextColor='white'
+                returnKeyType='go'
+                secureTextEntry
+                style={[styles.input, styles.inputBottom]}
+                ref={(input) => this.passwordInput = input}
+                onChange={(event) => this.textHandler(event.nativeEvent.text, 'password')}
+                value={user.password} />
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.buttonLogIn} onPress={this.logIn} >
+                  <Text style={styles.textLogIn}>Log in</Text>
+                </TouchableOpacity>
+              </View>
           </KeyboardAvoidingView> : <Loading background='#040404' size='large' color='#FFCF00' />}
       </Fragment>
     )

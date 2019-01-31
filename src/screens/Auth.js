@@ -9,8 +9,6 @@ const {
 import ButtonOscar from '../components/ButtonOscar';
 import api from '../services/api';
 
-const id = '1867060506705030';
-
 export class Auth extends Component {
 
   static navigationOptions = {
@@ -18,17 +16,20 @@ export class Auth extends Component {
   }
 
   async loginFacebook() {
-    let { isCancelled } = await LoginManager.logInWithReadPermissions(['public_profile']);
+    try {
+      let { isCancelled } = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
 
-    if (!isCancelled) {
-      let data = await AccessToken.getCurrentAccessToken();
-      let token = data.accessToken.toString();
-      await this.afterLoginComplete(token);
+      if (!isCancelled) {
+        let data = await AccessToken.getCurrentAccessToken();
+        let token = data.accessToken.toString();
+        await this.afterLoginComplete(token);
+      }
+      else {
+        alert('login incompleto')
+      }
+    } catch (e) {
+      alert(e)
     }
-    else {
-      console.log('Login incomplete');
-    }
-
   }
 
   afterLoginComplete = async (token) => {

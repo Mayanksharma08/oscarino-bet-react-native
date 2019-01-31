@@ -57,7 +57,7 @@ export class SignUp extends Component {
     const { user } = this.state
 
     return (
-      <KeyboardAvoidingView behavior='padding' style={styles.container}>
+      <KeyboardAvoidingView keyboardVerticalOffset={-500} behavior='padding' style={styles.container}>
         <TextInput
           textContentType='name'
           placeholder='user'
