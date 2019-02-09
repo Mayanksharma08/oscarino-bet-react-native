@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { Text, View, KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity, Alert, Linking, TouchableWithoutFeedback } from 'react-native';
 
 import api from '../services/api';
 
@@ -18,7 +18,7 @@ export class SignUp extends Component {
 
   signUp = async () => {
     try {
-      const response = await api.post('/register', this.state.user);
+      await api.post('/register', this.state.user);
 
       Alert.alert(
         'Congratz',
@@ -54,7 +54,7 @@ export class SignUp extends Component {
 
   render() {
 
-    const { user } = this.state
+    const { user } = this.state;
 
     return (
       <KeyboardAvoidingView keyboardVerticalOffset={-500} behavior='padding' style={styles.container}>
@@ -91,11 +91,13 @@ export class SignUp extends Component {
             <Text style={styles.textSignUp}>Sign up</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.termsContainer}>
-          <Text style={styles.termsText}>
-            By clicking Sign up you agree to our <Text style={{ textDecorationLine: 'underline' }}>Terms of Service</Text>.
+        <TouchableWithoutFeedback onPress={() => Linking.openURL("https://oscar-bet.blogspot.com/2019/01/politica-de-privacidade.html")}>
+          <View style={styles.termsContainer}>
+            <Text style={styles.termsText}>
+              By clicking Sign up you agree to our <Text style={{ textDecorationLine: 'underline' }}>Terms of Service</Text>.
           </Text>
-        </View>
+          </View>
+        </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     )
   }
@@ -111,13 +113,13 @@ const styles = StyleSheet.create({
   input: {
     color: 'white',
     width: '50%',
-    height: 60,
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(255,255,255,0.5)',
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingRight: 10,
-    paddingLeft: 10,
+    height: 45,
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.5)',
+    padding: 10,
+    borderRadius: 50,
+    paddingHorizontal: 15,
+    marginBottom: 20
   },
   inputBottom: {
     borderBottomWidth: 1,
@@ -140,12 +142,13 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     alignItems: 'center',
     padding: 10,
-    borderRadius: 50,
-    marginBottom: 20
+    borderRadius: 50
   },
   textSignUp: {
     fontWeight: 'bold',
-    fontSize: 16
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: "#000"
   }
 });
 

@@ -19,7 +19,7 @@ class Bets extends Component {
   }
 
   async componentDidMount() {
-    this.getBets();
+    this.props.navigation.addListener('willFocus', payload => this.getBets());
   }
 
   getBets = async () => {

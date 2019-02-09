@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Text, Alert, View, ScrollView, KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity, AsyncStorage } from 'react-native';
+import { Text, Alert, View, KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity, AsyncStorage } from 'react-native';
 
 import api from '../services/api';
 import Loading from '../components/Loading';
@@ -103,13 +103,13 @@ const styles = StyleSheet.create({
   input: {
     color: 'white',
     width: '50%',
-    height: 60,
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(255,255,255,0.5)',
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingRight: 10,
-    paddingLeft: 10
+    height: 45,
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.5)',
+    padding: 10,
+    borderRadius: 50,
+    paddingHorizontal: 15,
+    marginBottom: 20
   },
   inputBottom: {
     borderBottomWidth: 1,
@@ -125,12 +125,13 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     alignItems: 'center',
     padding: 10,
-    borderRadius: 50,
-    marginBottom: 20
+    borderRadius: 50
   },
   textLogIn: {
     fontWeight: 'bold',
-    fontSize: 16
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: "#000"
   }
 });
 

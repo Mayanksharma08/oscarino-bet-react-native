@@ -9,6 +9,11 @@ import Movies from './src/screens/Movies';
 import Movie from './src/screens/Movie';
 import Bets from './src/screens/Bets';
 import User from './src/screens/User';
+import UserShow from './src/screens/UserShow';
+import Group from './src/screens/Group';
+import Groups from './src/screens/Groups';
+import FormGroup from './src/screens/FormGroup';
+import AddMember from './src/screens/AddMember';
 
 import AuthLoading from './src/components/AuthLoading';
 
@@ -60,11 +65,11 @@ const StackBets = createStackNavigator({
   }
 });
 
-const StackUser = createStackNavigator({
-  User: {
-    screen: User,
+const StackGroup = createStackNavigator({
+  Groups: {
+    screen: Groups,
     navigationOptions: () => ({
-      title: 'User',
+      title: 'My Groups',
       headerStyle: {
         backgroundColor: '#040404'
       },
@@ -73,6 +78,67 @@ const StackUser = createStackNavigator({
       }
     }),
   },
+  Group: {
+    screen: Group,
+    navigationOptions: () => ({
+      headerStyle: {
+        backgroundColor: '#040404'
+      },
+      headerTintColor: 'white',
+    }),
+  },
+  FormGroup: {
+    screen: FormGroup,
+    navigationOptions: () => ({
+      title: 'Group',
+      headerStyle: {
+        backgroundColor: '#040404'
+      },
+      headerTintColor: 'white',
+    }),
+  },
+  AddMember: {
+    screen: AddMember,
+    navigationOptions: () => ({
+      headerStyle: {
+        backgroundColor: '#040404'
+      },
+      headerTintColor: 'white',
+    }),
+  },
+  UserShow: {
+    screen: UserShow,
+    navigationOptions: () => ({
+      headerStyle: {
+        backgroundColor: '#040404'
+      },
+      headerTintColor: 'white',
+    }),
+  }
+}, {
+    navigationOptions: () => ({
+      headerStyle: {
+        backgroundColor: '#040404'
+      },
+      headerTitleStyle: {
+        color: "white"
+      }
+    })
+  });
+
+const StackUser = createStackNavigator({
+  User: {
+    screen: User,
+    navigationOptions: () => ({
+      title: 'Profile',
+      headerStyle: {
+        backgroundColor: '#040404'
+      },
+      headerTitleStyle: {
+        color: "white"
+      }
+    }),
+  }
 });
 
 const TabNav = createBottomTabNavigator({
@@ -96,7 +162,17 @@ const TabNav = createBottomTabNavigator({
       }
     })
   },
-  User: {
+  'My Groups': {
+    screen: StackGroup,
+    navigationOptions: () => ({
+      tabBarIcon: ({ tintColor }) => {
+        return (
+          <Icon name='users' color={tintColor} />
+        );
+      }
+    })
+  },
+  'Profile': {
     screen: StackUser,
     navigationOptions: () => ({
       tabBarIcon: ({ tintColor }) => {

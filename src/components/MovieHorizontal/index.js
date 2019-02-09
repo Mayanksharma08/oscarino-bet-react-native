@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
-import { Text, View, FlatList, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Images from '../../assets';
 
 class MovieHorizontal extends PureComponent {
 
   render() {
-    const { item, onPress } = this.props;
+    const { item, onPress, onLongPress } = this.props;
 
     return (
       <View>
@@ -14,8 +15,9 @@ class MovieHorizontal extends PureComponent {
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
           {item.features.map(movie => (
             <View key={movie.id}>
-              <TouchableOpacity onPress={() => onPress({item, movie})}>
-                <Image style={styles.imageMovie} source={Images[movie.picture.path]} />
+              <TouchableOpacity onPress={() => onPress({ item, movie })} onLongPress={() => onLongPress(movie)}>
+                {movie.watched ? <Icon name='check' color='#FFCF00' size={20} style={{ position: 'absolute', marginTop: 5, marginLeft: 5, zIndex: 99999 }} /> : null}
+                <Image resizeMode='cover' style={styles.imageMovie} source={Images[movie.picture.path]} />
               </TouchableOpacity>
             </View>
           ))}
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
   imageMovie: {
     marginRight: 10,
     width: 120,
-    height: 180
+    height: 180,
   }
 });
 

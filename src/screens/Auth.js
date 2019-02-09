@@ -53,8 +53,8 @@ export class Auth extends Component {
         </View>
         <View style={styles.buttonContainer}>
           <ButtonOscar title='Login to Facebook' bg='#3b5998' colorText='white' method={() => this.loginFacebook()} />
-          <ButtonOscar title='Sign up' bg='white' method={() => this.props.navigation.navigate('SignUp')} />
-          <ButtonOscar title='Log in' bg='#FFCF00' method={() => this.props.navigation.navigate('Login')} />
+          <ButtonOscar title='Sign up' bg='white' colorText='#000' method={() => this.props.navigation.navigate('SignUp')} />
+          <ButtonOscar title='Log in' bg='#FFCF00' colorText="#000" method={() => this.props.navigation.navigate('Login')} />
         </View>
       </View>
     )
