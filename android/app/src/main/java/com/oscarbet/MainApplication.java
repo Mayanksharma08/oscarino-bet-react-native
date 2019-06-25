@@ -1,4 +1,4 @@
-package com.oscarbet;
+package com.oscarinobet;
 
 import android.app.Application;
 

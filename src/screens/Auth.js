@@ -49,7 +49,7 @@ export class Auth extends Component {
             style={styles.logo}
             source={require('../assets/oscar.png')}
           />
-          <Text style={styles.title}>Welcome to the Oscar Bet</Text>
+          <Text style={styles.title}>Welcome to the Oscarino Bet</Text>
         </View>
         <View style={styles.buttonContainer}>
           <ButtonOscar title='Login to Facebook' bg='#3b5998' colorText='white' method={() => this.loginFacebook()} />
