@@ -7,6 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "appcenter": "^2.2.0",
+    "appcenter-analytics": "^2.2.0",
+    "appcenter-crashes": "^2.2.0",
     "axios": "^0.18.0",
     "jwt-decode": "^2.2.0",
     "react": "16.6.3",

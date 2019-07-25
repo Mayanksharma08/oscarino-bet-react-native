@@ -40,7 +40,7 @@ class Movies extends Component {
   onLogPress(movie) {
     Alert.alert(
       movie.name,
-      "Are you sure you've watched this movie?",
+      "Are you sure you've watched this movie??",
       [
         { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
         { text: 'Mark as seen', onPress: () => this.markSeen(movie) },
